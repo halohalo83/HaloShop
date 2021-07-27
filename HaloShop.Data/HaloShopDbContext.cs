@@ -10,7 +10,7 @@ namespace HaloShop.Data
 {
     public class HaloShopDbContext : DbContext
     {
-        public HaloShopDbContext() : base("") // truyền vào connection string
+        public HaloShopDbContext() : base("HaloShopConnection") // truyền vào connection string
         {
             this.Configuration.LazyLoadingEnabled = false; // Khi mà node bảng cha không include thêm bảng con nữa
         }
