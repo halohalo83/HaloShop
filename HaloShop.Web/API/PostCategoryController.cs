@@ -1,39 +1,97 @@
-﻿using System;
+﻿using HaloShop.Model.Models;
+using HaloShop.Service;
+using HaloShop.Web.Infrastructure.Core;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace HaloShop.Web.API
 {
-    public class PostCategoryController : ApiController
+    [RoutePrefix("api/postcategory")]
+    public class PostCategoryController : ApiControllerBase
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        IPostCategoryService _postCategoryService;
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) : base(errorService)
         {
-            return "value";
+            this._postCategoryService = postCategoryService;
         }
-
-        // POST api/<controller>
-        public void Post([FromBody] string value)
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
         {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listCategory = _postCategoryService.GetAll();
+
+                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                }
+                return response;
+            });
         }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
         {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if(ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var category = _postCategoryService.Add(postCategory);
+                    _postCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.Created, category);
+                }
+                return response;
+            });
         }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
         {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    _postCategoryService.Update(postCategory);
+                    _postCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
+                return response;
+            });
+        }
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    _postCategoryService.Delete(id);
+                    _postCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
+                return response;
+            });
         }
     }
 }
