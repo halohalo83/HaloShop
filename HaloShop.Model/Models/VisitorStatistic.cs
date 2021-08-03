@@ -8,12 +8,12 @@ namespace HaloShop.Model.Models
     public class VisitorStatistic
     {
         [Key]
-        public Guid ID { set; get; }
+        public Guid ID { get; set; }
 
         [Required]
-        public DateTime VisitedDate { set; get; }
+        public DateTime VisitedDate { get; set; }
 
         [MaxLength(50)]
-        public string IPAddress { set; get; }
+        public string IPAddress { get; set; }
     }
 }

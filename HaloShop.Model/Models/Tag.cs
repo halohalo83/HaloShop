@@ -9,14 +9,14 @@ namespace HaloShop.Model.Models
         [Key]
         [MaxLength(50)]
         [Column(TypeName = "varchar")]
-        public string ID { set; get; }
+        public string ID { get; set; }
 
         [MaxLength(50)]
         [Required]
-        public string Name { set; get; }
+        public string Name { get; set; }
 
         [MaxLength(50)]
         [Required]
-        public string Type { set; get; }
+        public string Type { get; set; }
     }
 }

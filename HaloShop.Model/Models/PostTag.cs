@@ -8,17 +8,17 @@ namespace HaloShop.Model.Models
     {
         [Key]
         [Column(Order = 1)]
-        public int PostID { set; get; }
+        public int PostID { get; set; }
 
         [Key]
         [Column(TypeName = "varchar", Order = 2)]
         [MaxLength(50)]
-        public string TagID { set; get; }
+        public string TagID { get; set; }
 
         [ForeignKey("PostID")]
-        public virtual Post Post { set; get; }
+        public virtual Post Post { get; set; }
 
         [ForeignKey("TagID")]
-        public virtual Tag Tag { set; get; }
+        public virtual Tag Tag { get; set; }
     }
 }

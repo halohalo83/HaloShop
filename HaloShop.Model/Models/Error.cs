@@ -8,10 +8,10 @@ namespace HaloShop.Model.Models
     public class Error
     {
         [Key]
-        public int ID { set; get; }
+        public int ID { get; set; }
 
-        public string Message { set; get; }
-        public string StackTrace { set; get; }
-        public DateTime CreatedDate { set; get; }
+        public string Message { get; set; }
+        public string StackTrace { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

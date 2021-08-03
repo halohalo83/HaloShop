@@ -21,6 +21,6 @@ namespace HaloShop.Model.Abstract
         [MaxLength(256)]
         public string MetaDescription { get; set; }
 
-        public bool Status { set; get; }
+        public bool Status { get; set; }
     }
 }

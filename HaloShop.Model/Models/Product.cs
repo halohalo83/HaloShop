@@ -10,38 +10,38 @@ namespace HaloShop.Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
+        public int ID { get; set; }
 
         [Required]
         [MaxLength(256)]
-        public string Name { set; get; }
+        public string Name { get; set; }
 
         [Required]
         [MaxLength(256)]
-        public string Alias { set; get; }
+        public string Alias { get; set; }
 
         [Required]
-        public int CategoryID { set; get; }
+        public int CategoryID { get; set; }
 
         [MaxLength(256)]
-        public string Image { set; get; }
+        public string Image { get; set; }
 
         [Column(TypeName = "xml")]
-        public string MoreImages { set; get; }
-        public decimal Price { set; get; }
+        public string MoreImages { get; set; }
+        public decimal Price { get; set; }
 
-        public decimal? PromotionPrice { set; get; }
-        public int? Warranty { set; get; }
+        public decimal? PromotionPrice { get; set; }
+        public int? Warranty { get; set; }
 
         [MaxLength(500)]
-        public string Description { set; get; }
-        public string Content { set; get; }
+        public string Description { get; set; }
+        public string Content { get; set; }
 
-        public bool? HomeFlag { set; get; }
-        public bool? HotFlag { set; get; }
-        public int? ViewCount { set; get; }
+        public bool? HomeFlag { get; set; }
+        public bool? HotFlag { get; set; }
+        public int? ViewCount { get; set; }
 
         [ForeignKey("CategoryID")]
-        public virtual ProductCategory ProductCategory { set; get; }
+        public virtual ProductCategory ProductCategory { get; set; }
     }
 }

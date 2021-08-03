@@ -8,23 +8,23 @@ namespace HaloShop.Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
+        public int ID { get; set; }
 
         [Required]
         [MaxLength(256)]
-        public string Name { set; get; }
+        public string Name { get; set; }
 
         [MaxLength(256)]
-        public string Description { set; get; }
+        public string Description { get; set; }
 
         [MaxLength(256)]
-        public string Image { set; get; }
+        public string Image { get; set; }
 
         [MaxLength(256)]
-        public string Url { set; get; }
+        public string Url { get; set; }
 
-        public int? DisplayOrder { set; get; }
+        public int? DisplayOrder { get; set; }
 
-        public bool Status { set; get; }
+        public bool Status { get; set; }
     }
 }

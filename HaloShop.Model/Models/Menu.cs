@@ -8,27 +8,27 @@ namespace HaloShop.Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
+        public int ID { get; set; }
 
         [Required]
         [MaxLength(50)]
-        public string Name { set; get; }
+        public string Name { get; set; }
 
         [Required]
         [MaxLength(256)]
-        public string URL { set; get; }
+        public string URL { get; set; }
 
-        public int? DisplayOrder { set; get; }
+        public int? DisplayOrder { get; set; }
 
         [Required]
-        public int GroupID { set; get; }
+        public int GroupID { get; set; }
 
         [ForeignKey("GroupID")]
-        public virtual MenuGroup MenuGroup { set; get; }
+        public virtual MenuGroup MenuGroup { get; set; }
 
         [MaxLength(10)]
-        public string Target { set; get; }
+        public string Target { get; set; }
 
-        public bool Status { set; get; }
+        public bool Status { get; set; }
     }
 }

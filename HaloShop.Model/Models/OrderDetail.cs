@@ -8,18 +8,18 @@ namespace HaloShop.Model.Models
     {
         [Key]
         [Column(Order = 1)]
-        public int OrderID { set; get; }
+        public int OrderID { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        public int ProductID { set; get; }
+        public int ProductID { get; set; }
 
-        public int Quantitty { set; get; }
+        public int Quantitty { get; set; }
 
         [ForeignKey("OrderID")]
-        public virtual Order Order { set; get; }
+        public virtual Order Order { get; set; }
 
         [ForeignKey("ProductID")]
-        public virtual Product Product { set; get; }
+        public virtual Product Product { get; set; }
     }
 }
